@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECommerceApp.UI.Views.ProductsPage"
+             Title="ProductsPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="E-Commerce Products" FontSize="Large"/>
+            
+            <Entry Placeholder="Product Title" Text="{Binding Title}"/>
+            <Entry Placeholder="Description" Text="{Binding Description}"/>
+            <Entry Placeholder="Price" Text="{Binding Price}" Keyboard="Numeric"/>
+            <Button Text="Add product" Command="{Binding AddProductCommand}"/>
+
+            <CollectionView ItemsSource="{Binding Products}" VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Execute">
+                                    <SwipeItem
+                                        Text="Delete"
+                                        BackgroundColor="Red"
+                                          Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, 
+                                              Path=BindingContext.DeleteProductCommand}"
+                                        CommandParameter="{Binding}" >
+                                        
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            
+                        
+                            <StackLayout Padding="10">
+                                 <Label Text="{Binding Title}" FontSize="Medium"/>
+                                 <Label Text="{Binding Description}" FontSize="Small"/>
+                                 <Label Text="{Binding Price ,StringFormat='Price: {0:C}'}" FontSize="Small"/>
+                            </StackLayout>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

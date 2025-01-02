@@ -1,0 +1,25 @@
+# Build directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.userprefs
+
+# Log files
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Visual Studio working directory
+.vs/
+
+# Temporary files
+*.tmp
+
+# Secrets (customize as needed)
+appsettings.Development.json
